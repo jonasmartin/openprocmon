@@ -225,7 +225,7 @@ VOID CEventMgr::RegisterProcessor(CRefPtr<IProcessor> Processor)
 	m_Processors.push_back(Processor);
 }
 
-VOID CEventMgr::RegisterCallback(CRefPtr<IEventCallback> pCallback)
+VOID CEventMgr::RegisterCallback(IEventCallback* pCallback)
 {
 	m_callBackList.push_back(pCallback);
 }
@@ -238,6 +238,7 @@ VOID CEventMgr::Clear()
 	}
 	m_lock.unlock();
 
+	m_callBackList.clear();
 	m_EventMap.clear();
 	m_PushCount = 0;
 	m_PopCount = 0;

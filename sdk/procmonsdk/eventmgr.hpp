@@ -58,7 +58,7 @@ public:
 	// 
 	//
 
-	VOID RegisterCallback(CRefPtr<IEventCallback> pCallback);
+	VOID RegisterCallback(IEventCallback* pCallback);
 
 	VOID Clear();
 
@@ -74,7 +74,7 @@ private:
 private:
 	EVENT_MAP m_EventMap;
 	PROCESSOR_LIST m_Processors;
-	std::vector<CRefPtr<IEventCallback>> m_callBackList;
+	std::vector<IEventCallback*> m_callBackList;
 
 	std::condition_variable m_convar;
 	std::mutex m_lock;
